@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1440" height="980" fill="#ffffff"/>
+
+  <text x="720" y="36" text-anchor="middle" font-size="24" font-weight="700" fill="#111">Harmy — schema di collegamento driver Arduino</text>
+  <text x="720" y="58" text-anchor="middle" font-size="14" fill="#555">MKR WiFi 1010 + 3× TB6612FNG, alimentazione motori riciclata dal vano 4×D originale (6V)</text>
+
+  <!-- WiFi / HTTP cloud -->
+  <g>
+    <ellipse cx="1230" cy="120" rx="150" ry="46" fill="#eef4ff" stroke="#3b6fd1" stroke-width="1.5"/>
+    <text x="1230" y="115" text-anchor="middle" font-size="15" font-weight="700" fill="#1d3f80">WiFi / HTTP</text>
+    <text x="1230" y="134" text-anchor="middle" font-size="12" fill="#1d3f80">client (browser, app...)</text>
+    <line x1="1150" y1="150" x2="1010" y2="205" stroke="#3b6fd1" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="1010" y1="205" x2="1150" y2="150" stroke="#3b6fd1" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Battery pack -->
+  <g>
+    <rect x="40" y="180" width="230" height="110" rx="10" fill="#fff6e6" stroke="#c98a1c" stroke-width="1.5"/>
+    <text x="155" y="208" text-anchor="middle" font-size="15" font-weight="700" fill="#7a4c00">Vano batterie Harmy</text>
+    <text x="155" y="228" text-anchor="middle" font-size="13" fill="#7a4c00">4× D (UM-1) in serie</text>
+    <text x="155" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#7a4c00">≈ 6V — alimentazione motori</text>
+    <text x="155" y="266" text-anchor="middle" font-size="12" fill="#7a4c00">stessa fonte usata dal robot originale</text>
+    <text x="65" y="286" font-size="13" font-weight="700" fill="#7a4c00">+</text>
+    <text x="245" y="286" font-size="13" font-weight="700" fill="#7a4c00">−</text>
+  </g>
+
+  <!-- Safety MOSFET -->
+  <g>
+    <rect x="40" y="330" width="230" height="90" rx="10" fill="#ffecec" stroke="#c33" stroke-width="1.5"/>
+    <text x="155" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#8a1c1c">MOSFET di sicurezza</text>
+    <text x="155" y="374" text-anchor="middle" font-size="12" fill="#8a1c1c">interrompe il ritorno (−)</text>
+    <text x="155" y="390" text-anchor="middle" font-size="12" fill="#8a1c1c">alimentazione motori</text>
+    <text x="155" y="408" text-anchor="middle" font-size="12" font-weight="700" fill="#8a1c1c">gate ← D11 (endpoint /stop)</text>
+  </g>
+
+  <!-- lines battery -> mosfet -> gnd rail -->
+  <line x1="65" y1="290" x2="65" y2="330" stroke="#333" stroke-width="1.5"/>
+  <line x1="245" y1="290" x2="245" y2="330" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Common GND rail -->
+  <line x1="60" y1="460" x2="1380" y2="460" stroke="#333" stroke-width="2" stroke-dasharray="2 4"/>
+  <text x="70" y="452" font-size="12" fill="#333" font-weight="700">GND comune (rif. nota 2)</text>
+  <line x1="65" y1="420" x2="65" y2="460" stroke="#333" stroke-width="1.5"/>
+  <line x1="245" y1="420" x2="245" y2="460" stroke="#333" stroke-width="1.5"/>
+
+  <!-- VM rail (battery + straight to drivers) -->
+  <line x1="65" y1="180" x2="65" y2="150" stroke="#c98a1c" stroke-width="2"/>
+  <line x1="65" y1="150" x2="560" y2="150" stroke="#c98a1c" stroke-width="2"/>
+  <text x="300" y="142" text-anchor="middle" font-size="12" fill="#7a4c00" font-weight="700">VM 6V (potenza motori) → tutti i driver</text>
+
+  <!-- Arduino MKR box -->
+  <g>
+    <rect x="340" y="330" width="260" height="360" rx="10" fill="#eafbea" stroke="#2f8f3f" stroke-width="1.5"/>
+    <text x="470" y="358" text-anchor="middle" font-size="16" font-weight="700" fill="#1c5c28">Arduino MKR WiFi 1010</text>
+    <text x="470" y="376" text-anchor="middle" font-size="12" fill="#1c5c28">logica 3.3V — NON tollerante a 5V</text>
+    <text x="470" y="394" text-anchor="middle" font-size="12" fill="#1c5c28">(smontato dal Carrier per liberare i pin)</text>
+
+    <text x="360" y="422" font-size="13" fill="#1c5c28" font-weight="700">Base</text>
+    <text x="360" y="440" font-size="12" fill="#1c5c28">D0 (AIN1) · D1 (AIN2)</text>
+
+    <text x="360" y="466" font-size="13" fill="#1c5c28" font-weight="700">Spalla</text>
+    <text x="360" y="484" font-size="12" fill="#1c5c28">D2 (BIN1) · D3 (BIN2)</text>
+
+    <text x="360" y="510" font-size="13" fill="#1c5c28" font-weight="700">Gomito</text>
+    <text x="360" y="528" font-size="12" fill="#1c5c28">D4 (AIN1) · D5 (AIN2)</text>
+
+    <text x="360" y="554" font-size="13" fill="#1c5c28" font-weight="700">Polso</text>
+    <text x="360" y="572" font-size="12" fill="#1c5c28">D6 (BIN1) · D7 (BIN2)</text>
+
+    <text x="360" y="598" font-size="13" fill="#1c5c28" font-weight="700">Pinza (apri/chiudi)</text>
+    <text x="360" y="616" font-size="12" fill="#1c5c28">D8 (AIN1) · D9 (AIN2)</text>
+
+    <text x="360" y="642" font-size="13" fill="#1c5c28" font-weight="700">Luce pinza (spotlight)</text>
+    <text x="360" y="660" font-size="12" fill="#1c5c28">D10 → base transistor NPN</text>
+
+    <text x="360" y="676" font-size="12" fill="#1c5c28">3.3V → VCC logico driver, PWM/STBY</text>
+  </g>
+
+  <!-- Driver boxes -->
+  <g>
+    <rect x="700" y="330" width="220" height="90" rx="8" fill="#eef0ff" stroke="#4a4ac7" stroke-width="1.5"/>
+    <text x="810" y="352" text-anchor="middle" font-size="14" font-weight="700" fill="#2b2b8f">TB6612FNG — driver 1</text>
+    <text x="810" y="370" text-anchor="middle" font-size="12" fill="#2b2b8f">canale A → Base</text>
+    <text x="810" y="386" text-anchor="middle" font-size="12" fill="#2b2b8f">canale B → Spalla</text>
+    <text x="810" y="404" text-anchor="middle" font-size="11" fill="#2b2b8f">VM 6V · VCC 3.3V · GND comune</text>
+  </g>
+
+  <g>
+    <rect x="700" y="440" width="220" height="90" rx="8" fill="#eef0ff" stroke="#4a4ac7" stroke-width="1.5"/>
+    <text x="810" y="462" text-anchor="middle" font-size="14" font-weight="700" fill="#2b2b8f">TB6612FNG — driver 2</text>
+    <text x="810" y="480" text-anchor="middle" font-size="12" fill="#2b2b8f">canale A → Gomito</text>
+    <text x="810" y="496" text-anchor="middle" font-size="12" fill="#2b2b8f">canale B → Polso</text>
+    <text x="810" y="514" text-anchor="middle" font-size="11" fill="#2b2b8f">VM 6V · VCC 3.3V · GND comune</text>
+  </g>
+
+  <g>
+    <rect x="700" y="550" width="220" height="90" rx="8" fill="#eef0ff" stroke="#4a4ac7" stroke-width="1.5"/>
+    <text x="810" y="572" text-anchor="middle" font-size="14" font-weight="700" fill="#2b2b8f">TB6612FNG — driver 3</text>
+    <text x="810" y="590" text-anchor="middle" font-size="12" fill="#2b2b8f">canale A → Pinza</text>
+    <text x="810" y="606" text-anchor="middle" font-size="12" fill="#2b2b8f">canale B → libero</text>
+    <text x="810" y="624" text-anchor="middle" font-size="11" fill="#2b2b8f">VM 6V · VCC 3.3V · GND comune</text>
+  </g>
+
+  <!-- Transistor for LED -->
+  <g>
+    <rect x="700" y="660" width="220" height="70" rx="8" fill="#fff3e0" stroke="#c98a1c" stroke-width="1.5"/>
+    <text x="810" y="684" text-anchor="middle" font-size="13" font-weight="700" fill="#7a4c00">Transistor NPN (es. BC337)</text>
+    <text x="810" y="702" text-anchor="middle" font-size="12" fill="#7a4c00">pilota la luce/spotlight della pinza</text>
+  </g>
+
+  <!-- Motor boxes -->
+  <g>
+    <rect x="1020" y="320" width="180" height="60" rx="8" fill="#fdeef2" stroke="#c2497a" stroke-width="1.5"/>
+    <text x="1110" y="345" text-anchor="middle" font-size="13" font-weight="700" fill="#7a1c40">Motore Base</text>
+    <text x="1110" y="363" text-anchor="middle" font-size="11" fill="#7a1c40">Asse 1</text>
+  </g>
+  <g>
+    <rect x="1020" y="390" width="180" height="60" rx="8" fill="#fdeef2" stroke="#c2497a" stroke-width="1.5"/>
+    <text x="1110" y="415" text-anchor="middle" font-size="13" font-weight="700" fill="#7a1c40">Motore Spalla</text>
+    <text x="1110" y="433" text-anchor="middle" font-size="11" fill="#7a1c40">Asse 2</text>
+  </g>
+  <g>
+    <rect x="1020" y="460" width="180" height="60" rx="8" fill="#fdeef2" stroke="#c2497a" stroke-width="1.5"/>
+    <text x="1110" y="485" text-anchor="middle" font-size="13" font-weight="700" fill="#7a1c40">Motore Gomito</text>
+    <text x="1110" y="503" text-anchor="middle" font-size="11" fill="#7a1c40">Asse 3</text>
+  </g>
+  <g>
+    <rect x="1020" y="530" width="180" height="60" rx="8" fill="#fdeef2" stroke="#c2497a" stroke-width="1.5"/>
+    <text x="1110" y="555" text-anchor="middle" font-size="13" font-weight="700" fill="#7a1c40">Motore Polso</text>
+    <text x="1110" y="573" text-anchor="middle" font-size="11" fill="#7a1c40">Asse 4</text>
+  </g>
+  <g>
+    <rect x="1020" y="600" width="180" height="60" rx="8" fill="#fdeef2" stroke="#c2497a" stroke-width="1.5"/>
+    <text x="1110" y="625" text-anchor="middle" font-size="13" font-weight="700" fill="#7a1c40">Motore Pinza</text>
+    <text x="1110" y="643" text-anchor="middle" font-size="11" fill="#7a1c40">Asse 5 — apri/chiudi</text>
+  </g>
+  <g>
+    <rect x="1020" y="670" width="180" height="50" rx="8" fill="#fff3e0" stroke="#c98a1c" stroke-width="1.5"/>
+    <text x="1110" y="700" text-anchor="middle" font-size="13" font-weight="700" fill="#7a4c00">LED spotlight</text>
+  </g>
+
+  <!-- connector lines MKR -> drivers -->
+  <line x1="600" y1="425" x2="700" y2="358" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="470" x2="700" y2="390" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="514" x2="700" y2="468" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="558" x2="700" y2="500" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="602" x2="700" y2="578" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="654" x2="700" y2="695" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- drivers -> motors -->
+  <line x1="920" y1="350" x2="1020" y2="350" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="920" y1="400" x2="1020" y2="420" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="920" y1="460" x2="1020" y2="490" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="920" y1="510" x2="1020" y2="560" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="920" y1="595" x2="1020" y2="630" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="920" y1="695" x2="1020" y2="695" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- VM rail continuing to drivers 2 and 3 -->
+  <line x1="560" y1="150" x2="560" y2="150" stroke="#c98a1c" stroke-width="2"/>
+  <line x1="1290" y1="150" x2="1290" y2="486" stroke="#c98a1c" stroke-width="2" stroke-dasharray="1 0" opacity="0"/>
+
+  <!-- Notes box -->
+  <g>
+    <rect x="40" y="750" width="1360" height="200" rx="10" fill="#f7f7f7" stroke="#999" stroke-width="1"/>
+    <text x="60" y="778" font-size="15" font-weight="700" fill="#222">Note</text>
+    <text x="60" y="802" font-size="12.5" fill="#333">1. Alimentazione motori (VM, 6V) presa dal vano batterie originale di Harmy — NON dal 3.3V/USB del MKR. Alimenta tutti i moduli TB6612FNG in parallelo.</text>
+    <text x="60" y="822" font-size="12.5" fill="#333">2. Massa comune obbligatoria: GND del MKR, GND logico dei driver e ritorno (−) della batteria devono essere collegati insieme.</text>
+    <text x="60" y="842" font-size="12.5" fill="#333">3. PWMA/PWMB e STBY di ogni TB6612FNG collegati a 3.3V (fissi): per il primo test si pilotano i motori solo a piena velocità/direzione, senza controllo di velocità.</text>
+    <text x="60" y="862" font-size="12.5" fill="#333">4. Ogni motore: IN1=HIGH/IN2=LOW un verso, IN1=LOW/IN2=HIGH verso opposto, entrambi LOW = motore fermo (folle).</text>
+    <text x="60" y="882" font-size="12.5" fill="#333">5. MOSFET di sicurezza su D11: taglia l'alimentazione motori indipendentemente dallo stato dei driver — endpoint HTTP /stop lo deve poter azionare in ogni momento.</text>
+    <text x="60" y="902" font-size="12.5" fill="#333">6. Il MKR WiFi 1010 lavora a 3.3V e i pin NON sono tollerati a 5V: verificare che i moduli TB6612FNG scelti accettino logica 3.3V (la maggior parte lo fa).</text>
+    <text x="60" y="922" font-size="12.5" fill="#333">7. Il MKR IoT Carrier resta scollegato durante il pilotaggio dei motori, per liberare i pin digitali necessari; può essere ricollegato via Grove solo per display/debug locale.</text>
+  </g>
+</svg>

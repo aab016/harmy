@@ -19,13 +19,16 @@ Il produttore non esiste più e non ha un sito web attivo: le risorse disponibil
 ## Obiettivo del progetto
 
 1. Verificare che Harmy funzioni ancora meccanicamente ed elettricamente, bypassando i controlli originali (joystick/cartuccia MSX) ormai introvabili.
-2. Sviluppare un driver basato su Arduino/ESP32 che piloti direttamente i 5 motori DC (via H-bridge) ed esponga un'interfaccia HTTP per il controllo del braccio.
+2. Sviluppare un driver basato su Arduino MKR WiFi 1010 (kit Arduino Education Explore IoT Kit REV2) che piloti direttamente i 5 motori DC (via driver H-bridge TB6612FNG) ed esponga un'interfaccia HTTP per il controllo del braccio.
+
+L'alimentazione dei motori riutilizza il vano batterie originale di Harmy (4×D, 6V): non serve un alimentatore separato, si sostituisce solo l'elettronica di comando (joystick/cartuccia MSX → H-bridge pilotati dal MKR).
 
 ## Contenuto della cartella `resources/`
 
-Tracciata con **Git LFS** per evitare di appesantire il repository con file binari:
+I file binari (PDF, immagini) sono tracciati con **Git LFS** per evitare di appesantire il repository:
 
 - `quickshot-svi-2000-manual.pdf` — manuale originale del QuickShot SVI-2000 Robotarm
+- `schema-elettrico-driver-arduino.svg` — schema di collegamento vano batterie → driver TB6612FNG → motori, e MKR WiFi 1010 → driver
 - foto di Harmy (etichette, vano batterie, dettagli meccanici) usate per l'identificazione del modello
 
 ## Link utili
@@ -41,5 +44,6 @@ Tracciata con **Git LFS** per evitare di appesantire il repository con file bina
 
 - [x] Identificazione del modello e reperimento del manuale
 - [ ] Verifica funzionamento motori/assi
-- [ ] Progettazione elettronica del driver (H-bridge + Arduino/ESP32)
+- [x] Progettazione elettronica del driver (H-bridge + Arduino MKR WiFi 1010) — vedi `resources/schema-elettrico-driver-arduino.svg`
+- [ ] Realizzazione fisica del cablaggio
 - [ ] Interfaccia HTTP di controllo
