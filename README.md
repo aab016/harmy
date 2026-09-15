@@ -31,6 +31,11 @@ I file binari (PDF, immagini) sono tracciati con **Git LFS** per evitare di appe
 - `schema-elettrico-driver-arduino.svg` — schema di collegamento vano batterie → driver TB6612FNG → motori, e MKR WiFi 1010 → driver
 - foto di Harmy (etichette, vano batterie, dettagli meccanici) usate per l'identificazione del modello
 
+## Documentazione del percorso
+
+- [Presentazione "Harmy"](https://docs.google.com/presentation/d/15pbOaTJ8F_nnkq4sL5I_aqkSrkwFfh87PMP17H8uyp0/edit) — diario dell'evoluzione del progetto, per raccontare il procedimento agli studenti
+- [Primo grado di libertà ripristinato (YouTube Shorts)](https://youtube.com/shorts/lzMFdCiij74)
+
 ## Link utili
 
 - [Manuale utente su ManualsLib](https://www.manualslib.com/manual/3103077/Quickshot-Robotarm-Svi-2000.html)
@@ -43,7 +48,7 @@ I file binari (PDF, immagini) sono tracciati con **Git LFS** per evitare di appe
 ## Stato
 
 - [x] Identificazione del modello e reperimento del manuale
-- [ ] Verifica funzionamento motori/assi
 - [x] Progettazione elettronica del driver (H-bridge + Arduino MKR WiFi 1010) — vedi `resources/schema-elettrico-driver-arduino.svg`
-- [ ] Realizzazione fisica del cablaggio
+- [~] Verifica funzionamento motori/assi — primo grado di libertà ripristinato (vedi video sopra), restano 4 assi
+- [ ] Realizzazione fisica del cablaggio completo
 - [ ] Interfaccia HTTP di controllo
