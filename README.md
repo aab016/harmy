@@ -29,6 +29,7 @@ I file binari (PDF, immagini) sono tracciati con **Git LFS** per evitare di appe
 
 - `quickshot-svi-2000-manual.pdf` — manuale originale del QuickShot SVI-2000 Robotarm
 - `schema-elettrico-driver-arduino.svg` — schema di collegamento vano batterie → driver TB6612FNG → motori, e MKR WiFi 1010 → driver
+- `riferimento-owi-gearbox-manuale.pdf` — manuale di montaggio di un braccio robotico OWI (stessa famiglia di meccanismo: motore DC + riduttore a ingranaggi cilindrici per ogni giunto). **Non è il manuale di Harmy**: nessuno spaccato/esploso degli ingranaggi del SVI-2000 risulta disponibile pubblicamente (il "Patent Pending" in etichetta non è mai approdato a un brevetto rintracciabile); questo documento serve solo come riferimento generico sul principio di trasmissione, in attesa di documentare gli ingranaggi reali di Harmy man mano che si aprono i giunti
 - foto di Harmy (etichette, vano batterie, dettagli meccanici) usate per l'identificazione del modello
 
 ## Documentazione del percorso
@@ -44,6 +45,7 @@ I file binari (PDF, immagini) sono tracciati con **Git LFS** per evitare di appe
 - [Archivio MSX/Spectravideo di Hans Otten (ROM ROGO, cartuccia)](https://hansotten.file-hunter.com/do-it-yourself/spectravideo-rogo/)
 - [Spectravideo SVI-2000 — MSX Wiki](https://www.msx.org/wiki/Spectravideo_SVI-2000)
 - [Tutorial H-bridge su braccio robotico OWI Edge (stessa architettura a 5 motori DC, riferimento per il driver)](https://www.whiskeytangohotel.com/2012/01/h-bridge-motor-driver-tutorial-w-owi.html)
+- [Manuale di montaggio OWI Robotic Arm (riferimento generico sulla scatola ingranaggi per giunto)](https://www.robotpark.com/DT/PRO/91010-OWI-535%20ROBOTIC%20ARM%20EDGE%20KIT_PDF.pdf) — copia anche in `resources/riferimento-owi-gearbox-manuale.pdf`
 
 ## Stato
 
@@ -52,3 +54,4 @@ I file binari (PDF, immagini) sono tracciati con **Git LFS** per evitare di appe
 - [~] Verifica funzionamento motori/assi — primo grado di libertà ripristinato (vedi video sopra), restano 4 assi
 - [ ] Realizzazione fisica del cablaggio completo
 - [ ] Interfaccia HTTP di controllo
+- [ ] Documentare gli ingranaggi reali di Harmy (nessuno spaccato originale reperibile) man mano che si aprono i giunti
